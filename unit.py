@@ -5,13 +5,13 @@ from random import randint
 class Unit:
     def __init__(self, img, x_pos, y_pos, x_velocity, y_velocity):
         self.img = img
-        self.x_pos = x_pos#randint(0, 100)
-        self.y_pos = y_pos#randint(20,400)
+        self.x_pos = x_pos
+        self.y_pos = y_pos
         self.x_velocity = x_velocity
         self.y_velocity = y_velocity
 
     def tick(self):
-        self.y_pos = self.y_pos + self.y_velocity
+        self.y_pos = self.y_pos - self.y_velocity
 
 
 class Enemy(Unit):

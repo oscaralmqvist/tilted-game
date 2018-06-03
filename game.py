@@ -9,7 +9,7 @@ class App:
         self._running = True
         self._display_surf = None
         self.gamescene = Gamescene()
-        self.size = self.weight, self.height = 650, 860
+        self.size = self.width, self.height = 650, 860
 
     # initializes all PyGame modules
     def on_init(self):
@@ -23,9 +23,9 @@ class App:
             self._running = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
-                self.gamescene.player.y_pos = self.gamescene.player.y_pos + 200
+                self.gamescene.player.x_pos = self.gamescene.player.x_pos + 200
             if event.key == pygame.K_LEFT:
-                self.gamescene.player.y_pos = self.gamescene.player.y_pos - 200
+                self.gamescene.player.x_pos = self.gamescene.player.x_pos - 200
 
     # computes changes in the game world
     def on_loop(self):
@@ -34,7 +34,12 @@ class App:
     # prints graphics
     def on_render(self):
         self._display_surf.fill((255,255,255))
-        self._display_surf.blit(self.gamescene.player.img, (self.gamescene.player.x_pos, self.gamescene.player.y_pos))
+        #self._display_surf.blit(self.gamescene.player.img, (self.gamescene.player.x_pos, self.gamescene.player.y_pos))
+        #self._display_surf.blit(self.gamescene.enemy.img, (self.gamescene.enemy.x_pos, self.gamescene.enemy.y_pos))
+
+        for u in self.gamescene.units:
+            self._display_surf.blit(u.img, (u.x_pos, u.y_pos))
+
         pygame.display.flip()
 
     # quits all PyGame modules

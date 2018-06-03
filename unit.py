@@ -16,7 +16,7 @@ class Unit:
 
 class Enemy(Unit):
     def __init__(self):
-        Unit.__init__(self, pygame.image.load("resources/enemy_img.png"), randint(0,100), randint(20,400), 0, 2)
+        Unit.__init__(self, pygame.image.load("resources/enemy_img.png"), randint(10,650), randint(20,800), 0, 0.5)
 
 
 
@@ -24,3 +24,5 @@ class Player(Unit):
     def __init__(self):
         Unit.__init__(self, pygame.image.load("resources/player_img.png"), 20, 20, 0, 0)
         self.alive = True
+
+    

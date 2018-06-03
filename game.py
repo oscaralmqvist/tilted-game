@@ -2,11 +2,13 @@
 
 import pygame
 from pygame.locals import *
+from gamescene import *
 
 class App:
     def __init__(self):
         self._running = True
         self._display_surf = None
+        self.gamescene = Gamescene()
         self.size = self.weight, self.height = 650, 860
 
     # initializes all PyGame modules
@@ -19,19 +21,20 @@ class App:
     def on_event(self, event):
         if event.type == pygame.QUIT:
             self._running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RIGHT:
+                self.gamescene.player.y_pos = self.gamescene.player.y_pos + 200
+            if event.key == pygame.K_LEFT:
+                self.gamescene.player.y_pos = self.gamescene.player.y_pos - 200
 
     # computes changes in the game world
     def on_loop(self):
-        global img_pos
-        img_pos = pygame.Rect((100,100), (100,100))
-        print("asd")
+        self.gamescene.update()
 
     # prints graphics
     def on_render(self):
-        # load images
-        __img = pygame.image.load("resources/test_img.png")
         self._display_surf.fill((255,255,255))
-        self._display_surf.blit(__img, img_pos)
+        self._display_surf.blit(self.gamescene.player.img, (self.gamescene.player.x_pos, self.gamescene.player.y_pos))
         pygame.display.flip()
 
     # quits all PyGame modules

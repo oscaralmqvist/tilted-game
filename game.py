@@ -34,9 +34,6 @@ class App:
     # prints graphics
     def on_render(self):
         self._display_surf.fill((255,255,255))
-        #self._display_surf.blit(self.gamescene.player.img, (self.gamescene.player.x_pos, self.gamescene.player.y_pos))
-        #self._display_surf.blit(self.gamescene.enemy.img, (self.gamescene.enemy.x_pos, self.gamescene.enemy.y_pos))
-
         for u in self.gamescene.units:
             self._display_surf.blit(u.img, (u.x_pos, u.y_pos))
 

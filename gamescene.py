@@ -6,14 +6,13 @@ from unit import *
 class Gamescene:
     def __init__(self):
         self.player = Player()
-        self.enemy = Enemy()
-        self.units = []
-        self.units.append(self.player)
-        self.units.append(self.enemy)
-
+        self.units = [self.player]
+        self.generate_enemies(15)
 
     def update(self):
         for u in self.units:
             u.tick()
 
-    #def render(self)
+    def generate_enemies(self,numberOfEnemies):
+        for i in range(numberOfEnemies):
+            self.units.append(Enemy())
